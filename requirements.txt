@@ -1,4 +1,5 @@
-Flask
-tensorflow
 numpy
+tensorflow
+keras
 Pillow
+Flask
