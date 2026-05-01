@@ -1,61 +1,136 @@
-# Project Title - Deepfake Image Detection
+🚀 Deepfake Image Detection System
 
-# Objective
 
-This project aims to detect whether an image is real or fake (deepfake) using deep learning techniques. The model is trained on a dataset of real and AI-generated facial images and deployed using a Flask web application for real-time predictions.
 
-# Source
 
+
+
+
+
+📖 Overview
+
+This project presents a Deepfake Image Detection System designed to classify facial images as REAL or FAKE using advanced deep learning techniques.
+
+The solution leverages transfer learning with MobileNetV2 and is deployed through a Flask-based web application, enabling real-time predictions with confidence scores via a simple and intuitive interface.
+
+🎯 Objective
+
+The objective of this project is to develop a reliable system capable of identifying AI-generated (deepfake) images by:
+
+Detecting manipulated facial content
+Building an end-to-end machine learning pipeline
+Delivering real-time predictions through a web interface
+
+
+📂 Dataset
 Dataset: Real vs Fake Face Dataset
-
 Source: Kaggle Dataset Repository
 
-### Phase 1 - Data Preparation and Preprocessing
+The dataset contains a large collection of real and synthetically generated facial images used for training, validation, and evaluation.
 
-* Loading dataset (train, validation, test)
-* Image resizing and normalization
-* Data augmentation
+🧠 Model Architecture
 
-### Phase 2 - Model Building and Training
+The model is built using Transfer Learning:
 
-* Baseline CNN model
-* Transfer Learning using MobileNetV2
-* Model training on large dataset (~100k images)
-* Accuracy and loss tracking
+Base Model: MobileNetV2 (ImageNet pretrained)
+Input Size: 128 × 128 × 3
+Custom Layers
+Global Average Pooling
+Dense Layer (128, ReLU)
+Dropout (0.5)
+Sigmoid Output Layer
+Classification Strategy
+Probability > 0.5 → REAL
+Probability ≤ 0.5 → FAKE
 
-### Phase 3 - Model Evaluation
 
-* Confusion Matrix
-* Classification Report
-* Accuracy and F1-score analysis
-* Visualization of correct and incorrect predictions
+🧪 Methodology
 
-### Phase 4 - Deployment
+🔹 Data Preparation
+Dataset loading (train, validation, test)
+Image resizing and normalization
+Data augmentation to improve generalization
 
-* Flask web application
-* Image upload interface
-* Real-time prediction (REAL / FAKE)
-* Confidence score display
+🔹 Model Development
+Baseline CNN experimentation
+Transfer learning using MobileNetV2
+Training on ~100K images
+Performance monitoring using accuracy and loss
 
-### Challenges and Solution
+🔹 Evaluation
+Confusion Matrix analysis
+Classification report generation
+Accuracy and F1-score evaluation
+Visualization of predictions
 
-* Model loading failed due to TensorFlow/Keras version mismatch
-* Resolved by rebuilding the model architecture and loading trained weights using:
+🔹 Deployment
+Flask web application
+Image upload interface
+Real-time classification (REAL / FAKE)
+Confidence score output
+
+
+🏗️ Project Structure
+Deepfake-Detection/
+│
+├── app.py
+├── model.ipynb
+├── deepfake.weights.h5
+├── templates/
+│   └── index.html
+├── train.csv
+├── valid.csv
+├── test.csv
+├── requirements.txt
+└── README.md
+💻 System Workflow
+User uploads an image
+Image is resized to 128×128
+Pixel values are normalized
+Model performs prediction
+Output is displayed as:
+REAL / FAKE
+Confidence score
+📊 Sample Results
+Input Type	Prediction	Confidence
+Real Image	REAL	0.99
+Real Image	REAL	0.97
+Deepfake	FAKE	0.02
+Deepfake	FAKE	0.06
+🚀 Key Features
+Real-time deepfake detection
+Lightweight and efficient architecture
+Transfer learning-based approach
+Clean and responsive UI
+Scalable and easy to extend
+
+
+⚠️ Challenges & Solution
+
+Challenge:
+Model loading issues due to TensorFlow/Keras version mismatch.
+
+Solution:
+Resolved by reconstructing the architecture and loading trained weights independently:
 
 model.load_weights("deepfake.weights.h5")
 
-### License
 
-This project is for academic and learning purposes.
+🔮 Future Enhancements
+Video-based deepfake detection
+Cloud deployment (AWS / Render / Hugging Face)
+Face detection preprocessing
+Model explainability (Grad-CAM)
+Mobile optimization
 
-### Acknowledgements
 
-Deepfake Dataset (Kaggle)
+⚠️ Limitations
+Performance depends on dataset quality
+Limited generalization to unseen deepfake techniques
+Requires further optimization for production use
 
-TensorFlow & Keras documentation
 
-Flask documentation
-
-### Ashwin Shammy Mathew
-
-### Entri Elevate
+🙏 Acknowledgements
+Kaggle Deepfake Dataset
+TensorFlow & Keras Documentation
+Flask Documentation
