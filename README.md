@@ -15,6 +15,8 @@ This project presents a Deepfake Image Detection System designed to classify fac
 
 The solution leverages transfer learning with MobileNetV2 and is deployed through a Flask-based web application, enabling real-time predictions with confidence scores via a simple and intuitive interface.
 
+
+
 🎯 Objective
 
 
